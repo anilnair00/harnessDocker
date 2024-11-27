@@ -21,7 +21,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: acrtestkube
+              connectorRef: test
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -35,5 +35,6 @@ pipeline:
                   spec:
                     connectorRef: newdockeracr
                     repository: mytestreg.azurecr.io/test
+                    subscriptionId: ee902f6d-01a9-4a32-8c5f-af9403e6c766
                     tags:
                       - latest
