@@ -8,8 +8,9 @@ pipeline:
     ci:
       codebase:
         connectorRef: gitHubConnector
-        repoName: dockerHarness
+        repoName: harnessDocker
         build: <+input>
+        sparseCheckout: []
   stages:
     - stage:
         name: buildPush
