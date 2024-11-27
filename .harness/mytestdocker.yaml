@@ -1,0 +1,39 @@
+pipeline:
+  name: mytestdocker
+  identifier: mytestdocker
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gitHubConnector
+        repoName: dockerHarness
+        build: <+input>
+  stages:
+    - stage:
+        name: buildPush
+        identifier: buildPush
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: test
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushACR
+                  name: BuildAndPushACR_1
+                  identifier: BuildAndPushACR_1
+                  spec:
+                    connectorRef: newdockeracr
+                    repository: mytestreg.azurecr.io/myimage
+                    tags:
+                      - latest
