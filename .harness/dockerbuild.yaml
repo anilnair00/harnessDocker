@@ -33,7 +33,7 @@ pipeline:
                   name: BuildAndPushACR_1
                   identifier: BuildAndPushACR_1
                   spec:
-                    connectorRef: azuredockeracr
+                    connectorRef: newdockeracr
                     repository: mytestreg.azurecr.io/test
                     tags:
                       - latest
