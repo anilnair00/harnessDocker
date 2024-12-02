@@ -35,6 +35,6 @@ pipeline:
                   identifier: BuildAndPushACR_1
                   spec:
                     connectorRef: newdockeracr
-                    repository: mytestreg.azurecr.io/myimage
+                    repository: mytestreg.azurecr.io/mypackage
                     tags:
                       - latest
